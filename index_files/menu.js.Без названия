@@ -1,0 +1,34 @@
+var encogida = true;
+$(document).ready(function() {
+    prepMenu();
+});
+function prepMenu() {
+    $('.mini-burguer').click(function() {
+        if (encogida) {
+            $('.mini-top-menu').css('display', 'block');
+            encogida = false;
+        } else {
+            $('.mini-top-menu').css('display', 'none');
+            encogida = true;
+        }
+    });
+    $('.mini-sub-menu').click(function() {
+        mostrarSub($(this));
+    });
+    $('.mini-sub-menu').mouseenter(function() {
+        mostrarSub($(this));
+    });
+}
+
+function mostrarSub(obj) {
+    $('.mini-top-menu .selected').each(function() {
+        $(this).removeClass("selected");
+    });
+    obj.addClass("selected");
+    $('.sub-selected').each(function() {
+        $(this).removeClass("sub-selected");
+    });
+    if (obj.hasClass("conMas")) {
+        obj.find('.plegado').addClass("sub-selected");
+    }
+}
